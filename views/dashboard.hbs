@@ -1,0 +1,53 @@
+<h5 class="text-center">{{viewTitle}}</h5>
+<p class="text-center">Pour visualiser l'état actuel des salles, cliquez sur le button ci-dessous!</p>
+<div class="text-center"><a href="salle/list" class="btn btn-info" style="color: white;"> <b>Liste des Salles</b></a>
+</div>
+<canvas id="myChart" width="400" height="200"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+
+<script>
+
+    var salles= [];
+        var nums= [];
+
+            '{{#each testsalles}}'
+            salles.push('{{this}}');
+            console.log('{{this}}');
+
+            '{{/each}}'
+            '{{#each testnums}}'
+            nums.push('{{this}}');
+            console.log('{{this}}');
+
+            '{{/each}}'
+
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: salles,
+        datasets: [{
+            label: 'Nombre des occupations de la salle',
+            data: nums,
+            backgroundColor: [
+                'rgba(4, 116, 234, 0.3)',
+                'rgba(145, 39, 245, 0.3)',
+                'rgba(4, 116, 234, 0.3)',
+                'rgba(9, 203, 154, 0.3)',
+                'rgba(153, 102, 255, 0.3)',
+                'rgba(255, 159, 64, 0.3)'
+            ]
+        }]
+    },
+    options: {
+        scales: {
+            
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>

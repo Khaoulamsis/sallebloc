@@ -1,0 +1,25 @@
+<h3 class="text-center" style="margin-bottom: 20px; "> La liste des créneaux</h3>
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>Heure du début</th>
+            <th>Heure du fin</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.hrdebut}}</td>
+            <td>{{this.hrfin}}</td>
+            
+            <td>
+                <a href="/crenau/{{this._id}}"><i class="fa fa-pencil fa-lg btn-outline-dark" aria-hidden="true"></i></a>
+                <a href="/crenau/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg btn-outline-dark" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<center>
+<h3><a class="btn btn-outline-dark align-center btn-block"  href="/crenau" ><i class="fa fa-plus"></i> Ajouter nouveau créneau </a> </h3>
